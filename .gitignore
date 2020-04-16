@@ -11,3 +11,6 @@ bin-int/
 
 # User specific files
 *.user
+
+# Makafiles
+Makefile
