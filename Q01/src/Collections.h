@@ -1,26 +1,46 @@
 #ifndef COLLECTIONS_H_
 #define COLLECTIONS_H_
 
-typedef struct _node
+typedef struct queue
 {
-	struct _node* next;
-	void* value;
-} Node;
+	void* data;
+	struct list* next;
+} Queue;
 
-typedef struct _list
-{
-	Node* head;
-	Node* tail;
-	int count;
-} List;
+/**
+ * Add an element to the queue.
+ *
+ * @param queue Address of the queue where the element will be added.
+ * @param data Pointer to the data of the new element.
+ */
+void Enqueue(Queue** queue, void* data);
 
-List* CreateList();
-static Node* CreateNode();
+/**
+ * Take the next element in the queue.
+ *
+ * @param queue Address of the queue to take an element from.
+ *
+ * @return Pointer to the data taken from the queue.
+ * @return NULL if the queue was empty.
+ */
+void* Dequeue(Queue** queue);
 
-void Enqueue(List* list, void* data);
-void* Dequeue(List* list);
-void* Peek(List* list);
+/**
+ * Get the next element in the queue without removing him.
+ *
+ * @param queue Address of the queue to take an element from.
+ *
+ * @return Pointer to the next element's data in the queue.
+ * @return NULL if the queue is empty.
+ */
+void* Peek(Queue** queue);
 
-void FreeList(List* list, void (*freeValue)(void*));
+/**
+ * Delete queue from memory.
+ *
+ * @param queue Address of the queue to delete.
+ * @param freeData Function pointer to use to free the data of each element.
+ */
+void FreeQueue(Queue** queue, void (*freeData)(void*));
 
 #endif
