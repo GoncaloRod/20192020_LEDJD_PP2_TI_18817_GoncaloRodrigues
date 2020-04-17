@@ -41,6 +41,24 @@ void* Peek(Queue** queue);
  * @param queue Address of the queue to delete.
  * @param freeData Function pointer to use to free the data of each element.
  */
-void FreeQueue(Queue** queue, void (*freeData)(void*));
+void ClearQueue(Queue** queue, void (*freeData)(void*));
+
+/**
+ * Calculate average for a queue.
+ *
+ * @param queue Address of the queue to calculate average.
+ * @param getValue Function pointer to get the value to calculate average.
+ *
+ * @return Final average.
+ */
+float AverageQueue(Queue** queue, float (*getValue)(void*));
+
+/**
+ * Print every element in the queue.
+ *
+ * @param queue Address to the queue to print.
+ * @param printData Function pointer to print data in the queue.
+ */
+void PrintQueue(Queue** queue, void (*printData)(void*));
 
 #endif
