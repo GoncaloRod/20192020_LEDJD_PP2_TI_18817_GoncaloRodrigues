@@ -185,3 +185,29 @@ float ListAverage(List* list, int (*getValue)(void*))
 
 	return (float)sum / count;
 }
+
+void ClearList(List** list, void (*freeData)(void*))
+{
+	List* current;
+	List* next;
+
+	// Ensure that parameters were passed correctly
+	assert(list != NULL);
+	assert(free != NULL);
+
+	current = *list;
+
+	while (current != NULL)
+	{
+		// Save next node
+		next = current->next;
+
+		// Clear current data and node
+		freeData(current->data);
+		free(current);
+
+		current = next;
+	}
+
+	*list = NULL;
+}

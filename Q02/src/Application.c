@@ -54,5 +54,8 @@ int main(int argc, char** argv)
 	printf("\nTotal stock: %d\n", ListSum(list, &GetMedicineStock));
 	printf("Average stock: %.0f\n", ListAverage(list, &GetMedicineStock));
 
+	// Clear list
+	ClearList(&list, &free);
+
 	return 0;
 }
