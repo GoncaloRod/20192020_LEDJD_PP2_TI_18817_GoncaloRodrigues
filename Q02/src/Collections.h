@@ -13,12 +13,10 @@ typedef struct list
  * Duplicated elements will not be added to the list.
  *
  * @param list Memory address of the list to add the element.
+ * @param data Data to add to the list.
  * @param compareValue Function to compare values when adding the element.
- *
- * @return 1 if the element was added with success.
- * @return 0 if the element wasn't added to the list.
  */
-unsigned char AddSorted(List** list, unsigned char (*compareValue)(void*));
+void AddSorted(List** list, void* data, int (*compareValue)(void*, void*));
 
 /**
  * Get an element from list.
@@ -30,7 +28,7 @@ unsigned char AddSorted(List** list, unsigned char (*compareValue)(void*));
  * @return Memory address of the element if it exists in the list.
  * @return NULL if the element doesn't exist in the list.
  */
-void* GetElement(List* list, void* equivalentData, unsigned char (*compareValue)(void*));
+void* GetElement(List* list, void* equivalentData, int (*compareValue)(void*, void*));
 
 /**
  * Remove an element from list.
@@ -42,7 +40,7 @@ void* GetElement(List* list, void* equivalentData, unsigned char (*compareValue)
  * @return 1 if the element was removed with success.
  * @return 0 if the element wasn't removed from the list.
  */
-unsigned char RemoveElement(List** list, void* equivalentData, unsigned char (*compareValue)(void*));
+unsigned char RemoveElement(List** list, void* equivalentData, int (*compareValue)(void*, void*));
 
 /**
  * Print data in the list in ascending order.
