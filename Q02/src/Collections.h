@@ -36,11 +36,12 @@ void* GetElement(List* list, void* equivalentData, int (*compareValue)(void*, vo
  * @param list Memory address of the list to remove the element from.
  * @param equivalentData Memory address to an equivalent element.
  * @param compareValue Function to compare values when getting the element.
+ * @param freeData Function to use to free the data of each element.
  *
  * @return 1 if the element was removed with success.
  * @return 0 if the element wasn't removed from the list.
  */
-unsigned char RemoveElement(List** list, void* equivalentData, int (*compareValue)(void*, void*));
+int RemoveElement(List** list, void* equivalentData, int (*compareValue)(void*, void*), void (*freeData)(void*));
 
 /**
  * Print data in the list in ascending order.
@@ -48,7 +49,7 @@ unsigned char RemoveElement(List** list, void* equivalentData, int (*compareValu
  * @param list List to print.
  * @param printElement Function to print element's data individually.
  */
-void PrintListAscending(List* list, void (*printElement)(void*));
+void PrintListAscending(List* list, void (*printData)(void*));
 
 /**
  * Print data in the list in descending order.
@@ -56,7 +57,7 @@ void PrintListAscending(List* list, void (*printElement)(void*));
  * @param list List to print.
  * @param printElement Function to print element's data individually.
  */
-void PrintListDescending(List* list, void (*printElement)(void*));
+void PrintListDescending(List* list, void (*printData)(void*));
 
 /**
  * Calculate sum for list.
@@ -64,7 +65,7 @@ void PrintListDescending(List* list, void (*printElement)(void*));
  * @param list List to calculate sum.
  * @param getValue Function to get the value to calculate sum.
  */
-int ListSum(List* list, void (*getValue)(void*));
+int ListSum(List* list, int (*getValue)(void*));
 
 /**
  * Calculate average for list.
@@ -72,7 +73,7 @@ int ListSum(List* list, void (*getValue)(void*));
  * @param list List to calculate average.
  * @param getValue Function to get the value to calculate average.
  */
-float ListAverage(List* list, void (*getValue)(void*));
+float ListAverage(List* list, int (*getValue)(void*));
 
 /**
  * Delete list from memory.

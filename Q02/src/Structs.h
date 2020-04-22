@@ -1,6 +1,8 @@
 #ifndef STRUCTS_H_
 #define STRUCTS_H_
 
+#include <stdio.h>
+
 typedef struct medicine
 {
 	int id;
@@ -29,6 +31,28 @@ int CompareMedicines(void* med1, void* med2)
         return 0;
     else
         return -1;
+}
+
+/**
+ * Print a Medicine on the screen.
+ *
+ * @param medicine Address to the medicine to print.
+ */
+void PrintMedicine(void* medicine)
+{
+    Medicine med = *(Medicine*)medicine;
+
+    printf("%d - %s - %d available\n", med.id, med.name, med.availableStock);
+}
+
+/**
+ * Get stock from a medicine.
+ *
+ * @param medicine Address to the medicine to print.
+ */
+int GetMedicineStock(void* medicine)
+{
+    return ((Medicine*)medicine)->availableStock;
 }
 
 #endif
