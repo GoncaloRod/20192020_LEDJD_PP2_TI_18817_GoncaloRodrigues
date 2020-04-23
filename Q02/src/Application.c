@@ -21,7 +21,7 @@ int main(int argc, char** argv)
 		{.id = 3537, .name = "Med 5", .availableStock = 0}
 	};
 
-	// Populate queue with data inside the array
+	// Populate list with data inside the array
 	for (int i = 0; i < sizeof(medicines) / sizeof(Medicine); i++)
 	{
 		medicine = (Medicine*)malloc(sizeof(Medicine));
