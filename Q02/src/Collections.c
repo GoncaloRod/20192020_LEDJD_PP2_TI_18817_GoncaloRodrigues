@@ -193,7 +193,7 @@ void ClearList(List** list, void (*freeData)(void*))
 
 	// Ensure that parameters were passed correctly
 	assert(list != NULL);
-	assert(free != NULL);
+	assert(freeData != NULL);
 
 	current = *list;
 
