@@ -97,8 +97,9 @@ int RemoveElement(List** list, void* equivalentData, int (*compareValue)(void*, 
 			}
 			else
 			{
-				// Element to remove is in the middle of the list
-				current->next->previous = current->previous;
+				if (current->next != NULL)
+					current->next->previous = current->previous;
+
 				current->previous->next = current->next;
 			}
 
