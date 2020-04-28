@@ -3,7 +3,7 @@
 #include <stdlib.h>
 #include <assert.h>
 
-void AddSorted(List** list, void* data, int (*compareValue)(void*, void*))
+void ListAddSorted(List** list, void* data, int (*compareValue)(void*, void*))
 {
 	List* current;
 	List* newNode;
@@ -53,7 +53,7 @@ void AddSorted(List** list, void* data, int (*compareValue)(void*, void*))
 	}
 }
 
-void* GetElement(List* list, void* equivalentData, int (*compareValue)(void*, void*))
+void* ListGet(List* list, void* equivalentData, int (*compareValue)(void*, void*))
 {
 	List* current;
 
@@ -74,7 +74,7 @@ void* GetElement(List* list, void* equivalentData, int (*compareValue)(void*, vo
 	return NULL;
 }
 
-int RemoveElement(List** list, void* equivalentData, int (*compareValue)(void*, void*), void (*freeData)(void*))
+int ListRemove(List** list, void* equivalentData, int (*compareValue)(void*, void*), void (*freeData)(void*))
 {
 	List* current;
 

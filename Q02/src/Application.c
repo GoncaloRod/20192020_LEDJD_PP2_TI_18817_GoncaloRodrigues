@@ -32,17 +32,17 @@ int main(int argc, char** argv)
 		medicine->availableStock = medicines[i].availableStock;
 		strcpy(medicine->name, medicines[i].name);
 
-		AddSorted(&list, (void*)medicine, &CompareMedicines);
+		ListAddSorted(&list, (void*)medicine, &CompareMedicines);
 	}
 
 	// Update
 	med.id = 1245;
-	medicine = GetElement(list, &med, &CompareMedicines);
+	medicine = ListGet(list, &med, &CompareMedicines);
 	medicine->availableStock += 5;
 
 	// Remove
 	med.id = 5437;
-	RemoveElement(&list, &med, &CompareMedicines, &free);
+	ListRemove(&list, &med, &CompareMedicines, &free);
 
 	// Prints
 	PrintListAscending(list, &PrintMedicine);

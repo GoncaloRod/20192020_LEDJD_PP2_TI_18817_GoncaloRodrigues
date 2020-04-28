@@ -35,10 +35,10 @@ int main(int argc, char** argv)
 	}
 	
 	printf("People in queue:\n");
-	PrintQueue(&queue, &PrintPerson);
+	PrintQueue(queue, &PrintPerson);
 	
-	printf("\nAge average: %.0f years\n", AverageQueue(&queue, &GetPersonAge));
-	
+	printf("\nAge average: %.0f years\n", AverageQueue(queue, &GetPersonAge));
+
 	ClearQueue(&queue, &free);
 	
 	return 0;

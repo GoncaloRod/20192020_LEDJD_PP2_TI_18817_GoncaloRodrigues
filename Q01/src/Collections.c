@@ -63,13 +63,10 @@ void* Dequeue(Queue** queue)
     return nextData;
 }
 
-void* Peek(Queue** queue)
+void* Peek(Queue* queue)
 {
-    // Ensure that a queue was passed
-    assert(queue != NULL);
-
     // If queue has elements return data from the head. if not return NULL
-    return *queue != NULL ? (*queue)->data : NULL;
+    return queue != NULL ? queue->data : NULL;
 }
 
 void ClearQueue(Queue** queue, void (*freeData)(void*))
@@ -97,17 +94,16 @@ void ClearQueue(Queue** queue, void (*freeData)(void*))
     *queue = NULL;
 }
 
-float AverageQueue(Queue** queue, float (*getValue)(void*))
+float AverageQueue(Queue* queue, float (*getValue)(void*))
 {
 	float sum = 0;
 	int count = 0;
 	Queue* current;
 	
 	// Ensure that parameters were passed correctly
-	assert(queue != NULL);
 	assert(getValue != NULL);
 	
-	current = *queue;
+	current = queue;
 	
 	while (current != NULL)
 	{
@@ -120,15 +116,14 @@ float AverageQueue(Queue** queue, float (*getValue)(void*))
 	return count > 0 ? sum / count : 0;
 }
 
-void PrintQueue(Queue** queue, void (*printData)(void*))
+void PrintQueue(Queue* queue, void (*printData)(void*))
 {
 	Queue* current;
 	
 	// Ensure that parameters were passed correctly
-	assert(queue != NULL);
 	assert(printData != NULL);
 	
-	current = *queue;
+	current = queue;
 	
 	while (current != NULL)
 	{

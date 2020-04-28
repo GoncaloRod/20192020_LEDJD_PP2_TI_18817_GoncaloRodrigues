@@ -12,11 +12,11 @@ typedef struct list
  * Add new element to list neatly.
  * Duplicated elements will not be added to the list.
  *
- * @param list Memory address of the list to add the element.
+ * @param list List to add the element.
  * @param data Data to add to the list.
  * @param compareValue Function to compare values when adding the element.
  */
-void AddSorted(List** list, void* data, int (*compareValue)(void*, void*));
+void ListAddSorted(List** list, void* data, int (*compareValue)(void*, void*));
 
 /**
  * Get an element from list.
@@ -28,7 +28,7 @@ void AddSorted(List** list, void* data, int (*compareValue)(void*, void*));
  * @return Memory address of the element if it exists in the list.
  * @return NULL if the element doesn't exist in the list.
  */
-void* GetElement(List* list, void* equivalentData, int (*compareValue)(void*, void*));
+void* ListGet(List* list, void* equivalentData, int (*compareValue)(void*, void*));
 
 /**
  * Remove an element from list.
@@ -41,7 +41,7 @@ void* GetElement(List* list, void* equivalentData, int (*compareValue)(void*, vo
  * @return 1 if the element was removed with success.
  * @return 0 if the element wasn't removed from the list.
  */
-int RemoveElement(List** list, void* equivalentData, int (*compareValue)(void*, void*), void (*freeData)(void*));
+int ListRemove(List** list, void* equivalentData, int (*compareValue)(void*, void*), void (*freeData)(void*));
 
 /**
  * Print data in the list in ascending order.
