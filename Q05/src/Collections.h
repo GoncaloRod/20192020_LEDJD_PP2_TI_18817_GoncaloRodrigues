@@ -106,6 +106,17 @@ void BinaryTreeLeftRotate(BinaryTree** tree);
 void BinaryTreeRightRotate(BinaryTree** tree);
 
 /**
+ * Make a query in a tree.
+ * Results will be automatically printed in order.
+ *
+ * @param tree Tree to run query.
+ * @param equivalentData Equivalent data to the one you want to query.
+ * @param compareData Function to compare data when querying.
+ * @param printData Function to print data.
+ */
+void BinaryTreeQuery(BinaryTree* tree, void* equivalentData, int (*compareData)(void*, void*), void (*printData)(void*));
+
+/**
  * Clear a tree from memory.
  *
  * @param tree Tree to clear.

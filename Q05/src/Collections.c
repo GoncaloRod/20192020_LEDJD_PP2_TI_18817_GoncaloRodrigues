@@ -309,6 +309,24 @@ void BinaryTreeRightRotate(BinaryTree** tree)
 	*tree = leftNode;
 }
 
+void BinaryTreeQuery(BinaryTree* tree, void* equivalentData, int (*compareData)(void*, void*), void (*printData)(void*))
+{
+	// Ensure parameters were passed correctly
+	assert(equivalentData != NULL);
+	assert(compareData != NULL);
+	assert(printData != NULL);
+
+	if (tree == NULL)
+		return;
+
+	BinaryTreeQuery(tree->left, equivalentData, compareData, printData);
+
+	if (compareData(equivalentData, tree->data) == 0)
+		printData(tree->data);
+
+	BinaryTreeQuery(tree->right, equivalentData, compareData, printData);
+}
+
 void ClearBinaryTree(BinaryTree** tree, void (*freeData)(void*))
 {
 	// Ensure parameters were passed correctly

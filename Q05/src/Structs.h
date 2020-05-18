@@ -13,6 +13,11 @@ typedef struct _taxPayer
 	char hometown[32];
 } TaxPayer;
 
+/**
+ * Print a Tax Payer to the screen.
+ *
+ * @param taxPayer Tax Payer to print.
+ */
 void PrintTaxPayer(void* taxPayer)
 {
 	TaxPayer* tp = (TaxPayer*)taxPayer;
@@ -23,11 +28,22 @@ void PrintTaxPayer(void* taxPayer)
 	printf("%d - %s, %s, %s\n", tp->taxNumber, tp->name, tp->job, tp->hometown);
 }
 
+/**
+ * Compare two Tax Payers.
+ *
+ * @param taxPayer1 Tax payer 1 to compare.
+ * @param taxPayer2 Tax payer 2 to compare.
+ *
+ * @return 1 if taxPayer1 is greater than taxPayer2.
+ * @return 0 if taxPayer1 is equal to taxPayer2.
+ * @return -1 if taxPayer1 is less than taxPayer2.
+ */
 int CompareTaxPayers(void* taxPayer1, void* taxPayer2)
 {
 	TaxPayer* tp1 = (TaxPayer*)taxPayer1;
 	TaxPayer* tp2 = (TaxPayer*)taxPayer2;
 
+	// Ensure parameters were passed correctly
 	assert(tp1 != NULL);
 	assert(tp2 != NULL);
 
@@ -39,6 +55,34 @@ int CompareTaxPayers(void* taxPayer1, void* taxPayer2)
 		return 1;
 }
 
+/**
+ * Compare hometown of 2 Tax Payers.
+ *
+ * @param taxPayer1 Tax payer 1 to compare.
+ * @param taxPayer2 Tax payer 2 to compare.
+ *
+ * @return 1 if taxPayer1 hometown is greater than taxPayer2's.
+ * @return 0 if taxPayer1 hometown is equal to taxPayer2's.
+ * @return -1 if taxPayer1 hometown is less than taxPayer2's.
+ */
+int CompareTaxPayerHometown(void* taxPayer1, void* taxPayer2)
+{
+	TaxPayer* tp1 = (TaxPayer*)taxPayer1;
+	TaxPayer* tp2 = (TaxPayer*)taxPayer2;
+
+	// Ensure parameters were passed correctly
+	assert(tp1 != NULL);
+	assert(tp2 != NULL);
+
+	return strcmp(tp1->hometown, tp2->hometown);
+}
+
+/**
+ * Copy data from 1 Tax Payer to another.
+ *
+ * @param destination Tax Payer to receive new data.
+ * @param source Source of the data.
+ */
 void CopyTaxPayer(void* destination, void* source)
 {
 	TaxPayer* d = (TaxPayer*)destination;

@@ -42,11 +42,15 @@ int main(int argc, char** argv)
 	// Remove
 	BinaryTreeRemove(&tree, &taxPayers[5], &CompareTaxPayers, &free, &CopyTaxPayer);
 
-	// TODO: Query
+	// Print
+	printf("Tax Payers:\n");
+	InOrder(tree, &PrintTaxPayer);
+
+	// Query
+	printf("\n\nTax Payers in %s:\n", taxPayers[0].hometown);
+	BinaryTreeQuery(tree, &taxPayers[0], &CompareTaxPayerHometown, &PrintTaxPayer);
 
 	// TODO: Average
-
-	InOrder(tree, &PrintTaxPayer);
 	
 	ClearBinaryTree(&tree, &free);
 
