@@ -50,8 +50,6 @@ int main(int argc, char** argv)
 	printf("\n\nTax Payers in %s:\n", taxPayers[0].hometown);
 	BinaryTreeQuery(tree, &taxPayers[0], &CompareTaxPayerHometown, &PrintTaxPayer);
 
-	// TODO: Average
-	
 	ClearBinaryTree(&tree, &free);
 
 	return 0;
