@@ -327,6 +327,62 @@ void BinaryTreeQuery(BinaryTree* tree, void* equivalentData, int (*compareData)(
 	BinaryTreeQuery(tree->right, equivalentData, compareData, printData);
 }
 
+int BinaryTreeQueryCount(BinaryTree* tree, void* equivalentData, int (*compareData)(void*, void*))
+{
+	int count = 0;
+
+	// Ensure parameters were passed correctly
+	assert(equivalentData != NULL);
+	assert(compareData != NULL);
+
+	if (tree == NULL)
+		return 0;
+
+	if (compareData(tree->data, equivalentData) == 0)
+		count++;
+
+	count += BinaryTreeQueryCount(tree->left, equivalentData, compareData);
+	count += BinaryTreeQueryCount(tree->right, equivalentData, compareData);
+
+	return count;
+}
+
+float BinaryTreeQuerySum(BinaryTree* tree, void* equivalentData, int (*compareData)(void*, void*), float (*getValue)(void*))
+{
+	float sum = 0.0f;
+
+	// Ensure parameters were passed correctly
+	assert(equivalentData != NULL);
+	assert(compareData != NULL);
+	assert(getValue != NULL);
+
+	if (tree == NULL)
+		return 0.0f;
+
+	if (compareData(tree->data, equivalentData) == 0)
+		sum += getValue(tree->data);
+
+	sum += BinaryTreeQuerySum(tree->left, equivalentData, compareData, getValue);
+	sum += BinaryTreeQuerySum(tree->right, equivalentData, compareData, getValue);
+
+	return sum;
+}
+
+float BinaryTreeQueryAverage(BinaryTree* tree, void* equivalentData, int (*compareData)(void*, void*), float (*getValue)(void*))
+{
+	float sum, count;
+
+	// Ensure parameters were passed correctly
+	assert(equivalentData != NULL);
+	assert(compareData != NULL);
+	assert(getValue != NULL);
+
+	sum = BinaryTreeQuerySum(tree, equivalentData, compareData, getValue);
+	count = BinaryTreeQueryCount(tree, equivalentData, compareData);
+
+	return count > 0 ? sum / count : 0.0f;
+}
+
 void ClearBinaryTree(BinaryTree** tree, void (*freeData)(void*))
 {
 	// Ensure parameters were passed correctly

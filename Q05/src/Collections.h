@@ -117,6 +117,41 @@ void BinaryTreeRightRotate(BinaryTree** tree);
 void BinaryTreeQuery(BinaryTree* tree, void* equivalentData, int (*compareData)(void*, void*), void (*printData)(void*));
 
 /**
+ * Get the number of elements in a tree with a filter.
+ *
+ * @param tree Tree to calculate count.
+ * @param equivalent Data Equivalent data to the one you want to filter.
+ * @param compareData Function to compare data when filtering.
+ *
+ * @return Number of elements in the tree that passed the filter.
+ */
+int BinaryTreeQueryCount(BinaryTree* tree, void* equivalentData, int (*compareData)(void*, void*));
+
+/**
+ * Calculate the sum in a tree with a filter.
+ *
+ * @param tree Tree to calculate sum.
+ * @param equivalent Data Equivalent data to the one you want to filter.
+ * @param compareData Function to compare data when filtering.
+ * @param getValue Function to get value to calculate sum.
+ *
+ * @return Sum of the elements in the tree that passed the filter.
+ */
+float BinaryTreeQuerySum(BinaryTree* tree, void* equivalentData, int (*compareData)(void*, void*), float (*getValue)(void*));
+
+/**
+ * Calculate the average in a tree with a filter.
+ *
+ * @param tree Tree to calculate sum.
+ * @param equivalent Data Equivalent data to the one you want to filter.
+ * @param compareData Function to compare data when filtering.
+ * @param getValue Function to get value to calculate average.
+ *
+ * @return Average of the elements in the tree that passed the filter.
+ */
+float BinaryTreeQueryAverage(BinaryTree* tree, void* equivalentData, int (*compareData)(void*, void*), float (*getValue)(void*));
+
+/**
  * Clear a tree from memory.
  *
  * @param tree Tree to clear.

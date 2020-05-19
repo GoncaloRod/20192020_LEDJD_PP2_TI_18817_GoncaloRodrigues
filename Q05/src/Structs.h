@@ -11,6 +11,7 @@ typedef struct _taxPayer
 	char name[32];
 	char job[32];
 	char hometown[32];
+	float salary;
 } TaxPayer;
 
 /**
@@ -25,7 +26,7 @@ void PrintTaxPayer(void* taxPayer)
 	// Ensure parameters were passed correctly
 	assert(tp != NULL);
 
-	printf("%d - %s, %s, %s\n", tp->taxNumber, tp->name, tp->job, tp->hometown);
+	printf("%d - %s, %s, %s - Salary: %.2f\n", tp->taxNumber, tp->name, tp->job, tp->hometown, tp->salary);
 }
 
 /**
@@ -78,6 +79,28 @@ int CompareTaxPayerHometown(void* taxPayer1, void* taxPayer2)
 }
 
 /**
+ * Compare job of 2 Tax Payers.
+ *
+ * @param taxPayer1 Tax payer 1 to compare.
+ * @param taxPayer2 Tax payer 2 to compare.
+ *
+ * @return 1 if taxPayer1 job is greater than taxPayer2's.
+ * @return 0 if taxPayer1 job is equal to taxPayer2's.
+ * @return -1 if taxPayer1 job is less than taxPayer2's.
+ */
+int CompareTaxPayerJob(void* taxPayer1, void* taxPayer2)
+{
+	TaxPayer* tp1 = (TaxPayer*)taxPayer1;
+	TaxPayer* tp2 = (TaxPayer*)taxPayer2;
+
+	// Ensure parameters were passed correctly
+	assert(tp1 != NULL);
+	assert(tp2 != NULL);
+
+	return strcmp(tp1->job, tp2->job);
+}
+
+/**
  * Copy data from 1 Tax Payer to another.
  *
  * @param destination Tax Payer to receive new data.
@@ -96,6 +119,16 @@ void CopyTaxPayer(void* destination, void* source)
 	strcpy(d->name, s->name);
 	strcpy(d->job, s->job);
 	strcpy(d->hometown, s->hometown);
+	d->salary = s->salary;
+}
+
+float GetTaxPayerSalary(void* taxPayer)
+{
+	TaxPayer* tp = (TaxPayer*)taxPayer;
+
+	assert(tp != NULL);
+
+	return tp->salary;
 }
 
 #endif
