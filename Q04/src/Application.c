@@ -1,6 +1,3 @@
-#define _CRTDBG_MAP_ALLOC
-#include <crtdbg.h>
-
 #include <stdio.h>
 #include <stdlib.h>
 
@@ -55,8 +52,6 @@ int main(int argc, char** argv)
 
 	// Clear hash table from memory
 	ClearHashTable(&hashTable, &free);
-
-	_CrtDumpMemoryLeaks();
 
 	return 0;
 }
