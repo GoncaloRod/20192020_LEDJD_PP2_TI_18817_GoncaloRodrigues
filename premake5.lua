@@ -119,25 +119,3 @@ project "Q05"
     filter "configurations:Release"
         runtime "Release"
         optimize "on"
-
-project "Q06"
-	location "Q06"
-	kind "ConsoleApp"
-	language "C"
-
-	targetdir("bin/" .. outputdir .. "/%{prj.name}")
-    objdir("bin-int/" .. outputdir .. "/%{prj.name}")
-
-    files
-    {
-        "%{prj.name}/src/**.h",
-        "%{prj.name}/src/**.c"
-    }
-
-    filter "configurations:Debug"
-        runtime "Debug"
-        symbols "on"
-
-    filter "configurations:Release"
-        runtime "Release"
-        optimize "on"
